@@ -1,1 +1,1 @@
-[]
+[{"id":1,"id_user":1,"user":{"id":1,"username":"syahrul","password":"$2a$10$LZoBSVcaXc7s7IlhnHZhye8zKttbmDwRQHjpXj2mKwhCBYYJD6dvy","email":"syahrul@gmail.com","created_at":"2023-06-30T00:18:26.1416756+07:00"},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODgwNjEyNzEsImlhdCI6MTY4ODA1OTQ3MSwibmJmIjoxNjg4MDU5NDcxLCJzdWIiOjF9.SpnhfF0jJ0skBbd3XNqf84nE1qjEcmSI0BjHEp8q4l8","created_at":"2023-06-30T00:24:31.4561148+07:00"}]

@@ -47,41 +47,50 @@ func NewRouter(userCon *controller.UserCon, accCon *controller.AccountCon, hisCo
 	accRouter := router.Group("/account")
 	{
 		accRouter.GET("/", accCon.FindAll)
-		accRouter.POST("/", accCon.Create)
 		accRouter.GET("/:id", accCon.FindByID)
 		accRouter.PUT("/:id", accCon.Update)
 		accRouter.DELETE("/:id", accCon.Delete)
 		accRouter.Use(middleware.AuthMiddleware())
 		{
 			accRouter.GET("/get", accCon.GetByUserID)
+			accRouter.POST("/", accCon.Create)
 		}
 	}
 
 	hisRouter := router.Group("/history")
 	{
-		hisRouter.GET("/", hisCon.FindAll)
-		hisRouter.POST("/", hisCon.Create)
-		hisRouter.GET("/:id", hisCon.FindByID)
-		hisRouter.PUT("/:id", hisCon.Update)
-		hisRouter.DELETE("/:id", hisCon.Delete)
+		hisRouter.Use(middleware.AuthMiddleware())
+		{
+			hisRouter.GET("/", hisCon.FindAll)
+			hisRouter.POST("/", hisCon.Create)
+			hisRouter.GET("/:id", hisCon.FindByID)
+			hisRouter.PUT("/:id", hisCon.Update)
+			hisRouter.DELETE("/:id", hisCon.Delete)
+		}
 	}
 
 	traRouter := router.Group("/transfer")
 	{
-		traRouter.GET("/", traCon.FindAll)
-		traRouter.POST("/", traCon.Create)
-		traRouter.GET("/:id", traCon.FindByID)
-		traRouter.PUT("/:id", traCon.Update)
-		traRouter.DELETE("/:id", traCon.Delete)
+		traRouter.Use(middleware.AuthMiddleware())
+		{
+			traRouter.GET("/", traCon.FindAll)
+			traRouter.POST("/", traCon.Create)
+			traRouter.GET("/:id", traCon.FindByID)
+			traRouter.PUT("/:id", traCon.Update)
+			traRouter.DELETE("/:id", traCon.Delete)
+		}
 	}
 
 	sesRouter := router.Group("/session")
 	{
-		sesRouter.GET("/", sesCon.FindAll)
-		sesRouter.POST("/", sesCon.Create)
-		sesRouter.GET("/:id", sesCon.FindByID)
-		sesRouter.PUT("/:id", sesCon.Update)
-		sesRouter.DELETE("/:id", sesCon.Delete)
+		sesRouter.Use(middleware.AuthMiddleware())
+		{
+			sesRouter.GET("/", sesCon.FindAll)
+			sesRouter.POST("/", sesCon.Create)
+			sesRouter.GET("/:id", sesCon.FindByID)
+			sesRouter.PUT("/:id", sesCon.Update)
+			sesRouter.DELETE("/:id", sesCon.Delete)
+		}
 	}
 
 	return r
